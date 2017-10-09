@@ -60,12 +60,11 @@
     <instance objName="obj_hwall" x="962" y="1056" name="inst_8618AB3A" locked="0" code="" scaleX="64.4499969482422" scaleY="1.80645155906677" colour="4294967295" rotation="0"/>
     <instance objName="obj_hwall" x="962" y="73" name="inst_5C320EBB" locked="0" code="" scaleX="64.4499969482422" scaleY="4.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_vwall" x="38" y="480" name="inst_DA9B1FB7" locked="0" code="" scaleX="4.5" scaleY="38.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player_stats" x="672" y="512" name="inst_3239E59D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_slime" x="1216" y="544" name="inst_870F934F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_slime" x="1184" y="768" name="inst_C007B29A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_slime" x="768" y="608" name="inst_E0D5EE4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_slime" x="640" y="288" name="inst_54013525" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_door" x="1888" y="130" name="inst_11BB0A4A" locked="0" code="target_x = 50;&#xA;target_y = 512;&#xA;target_r = rm_two;&#xA;" scaleX="2" scaleY="30" colour="4294967295" rotation="0"/>
+    <instance objName="obj_door" x="1888" y="128" name="inst_11BB0A4A" locked="0" code="target_x = 50;&#xA;target_y = 512;&#xA;target_r = rm_two;&#xA;" scaleX="2" scaleY="30" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="832" y="704" name="inst_179BFDE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="1088" y="544" name="inst_A04328D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="991" y="632" name="inst_4635B4CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -92,6 +91,7 @@
     <instance objName="obj_grass" x="1728" y="992" name="inst_D0FA417D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_k" x="928" y="512" name="inst_2CB42721" locked="0" code="" scaleX="1" scaleY="1.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_view" x="928" y="576" name="inst_73E40033" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Game" x="0" y="0" name="inst_3FDCF4FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>-1</PhysicsWorld>

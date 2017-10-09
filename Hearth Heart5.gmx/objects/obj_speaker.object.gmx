@@ -30,9 +30,7 @@ dialog = noone;
 dialog_page = 0;
 xoffset = -32;
 yoffset = -40;
-text[0] = "I hope it doesn't rain...";
-text[1] = "...for your sake!";
-text[2] = "You should wake up soon.";
+text[0] = "If this is seen. There is an issue."
 </string>
           </argument>
         </arguments>
