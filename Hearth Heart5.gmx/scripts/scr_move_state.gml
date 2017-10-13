@@ -1,4 +1,4 @@
-///scr_move_state
+/*///scr_move_state
 scr_get_input();
 
 if (dash_key && obj_player_stats.stamina >= DASH_COST) {
@@ -31,40 +31,105 @@ vspd = lengthdir_y(len, dir);
 phy_position_x += hspd;
 phy_position_y += vspd;
 
-// Control the sprite
-image_speed = .2;
-if (len == 0) image_index = 0;
-
-switch (face) {
-    case LEFT:
-        sprite_index = spr_player_left;
-        break;    
-
-    case RIGHT:
-        sprite_index = spr_player_right;
-        break;    
-
-    case DOWN:
-        sprite_index = spr_player_down;
-        break;    
-
-    case DOWN_LEFT:
-        sprite_index = spr_player_down_left;
-        break;    
-
-    case DOWN_RIGHT:
-        sprite_index = spr_player_down_right;
-        break;    
-
-    case UP:
-        sprite_index = spr_player_up;
-        break;    
-
-    case UP_LEFT:
-        sprite_index = spr_player_up_left;
-        break;    
+*/
+///st_player_walk()
+///Checks what direction key was pressed then moves player proper direction.
+switch(face) 
+{
+    case "UP":
+    {
+        image_speed = anime; ///sets the speed on player animation
+        sprite_index = playerSprite[0]; ///sets players direction sprite
+        hspd = 0; ///set x axis to 0
+        vspd = -spd; /// using the player's speed moves player up or down
+        p_direction = 90; ///sets players direction
+        ///lets player keep moving unless talking to a npc.
+                     
+        scr_get_input();
+        break;
+    }
     
-    case UP_RIGHT:
-        sprite_index = spr_player_up_right;
-        break;    
+    case "DOWN": 
+    {
+        image_speed = anime;
+        sprite_index = playerSprite[1];
+        hspd = 0;
+        vspd = spd;
+        p_direction = 270;
+                
+                     
+        scr_get_input();
+        break;
+    }
+    
+    case "LEFT": 
+    {
+        image_speed = anime;
+        sprite_index = playerSprite[2];
+        hspd = -spd;
+        vspd = 0;
+        p_direction = 180;
+                      
+        scr_get_input();
+        break;
+    }
+    case "RIGHT":
+    {
+        image_speed = anime;
+        sprite_index = playerSprite[3];
+        hspd = spd;
+        vspd = 0;
+        p_direction = 0;
+
+                     
+        scr_get_input();
+        break;
+    }
+    case "UPLEFT":
+    {
+        image_speed = anime;
+        sprite_index = playerSprite[4];
+        hspd = -spd;
+        vspd = -spd;
+        p_direction = 135;
+        
+                     
+        scr_get_input();
+        break;
+    }
+    case "UPRIGHT":
+    {
+        image_speed = anime;
+        sprite_index = playerSprite[5];
+        hspd = spd;
+        vspd = -spd;
+                        
+                     
+        scr_get_input();
+        break;
+    }
+    case "DOWNLEFT":
+    {
+        image_speed = anime;
+        sprite_index = playerSprite[6];
+        hspd = -spd;
+        vspd = spd;
+        p_direction = 225;
+
+                     
+        scr_get_input();
+        break;
+    }
+    case "DOWNRIGHT":
+    {
+        image_speed = anime;
+        sprite_index = playerSprite[7];
+        hspd = spd;
+        vspd = spd;
+        p_direction = 315;
+                           
+        scr_get_input();
+        break;
+    }
 }
+//collision(); ///After setting the players vel it then checks the collision and moves the player

@@ -25,20 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///creates var for Inputs
+            <string>///Declare input key Var
 up = false;
 down = false;
 left = false;
 right = false;
 start = false;
-select = false;
-dash = false;
-sneak = false;
-quick_item_1 = false;
-quick_item_2 = false;
+tumble = false;
 attack = false;
-button_5 = false;
-button_6 = false;
+
 </string>
           </argument>
         </arguments>
@@ -61,18 +56,14 @@ button_6 = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>up_key = keyboard_check(ord('W')); ///up
-down_key = keyboard_check(ord('S')); ///down
-left_key = keyboard_check(ord('A')); ///left
-right_key = keyboard_check(ord('D')); ///right
-dash_key = keyboard_check_pressed(vk_shift); ///button_1
-sneak_key = keyboard_check(vk_control); ///button_2
-quick_1_key = keyboard_check_pressed(ord('Q')); ///button_3
-quick_2_key = keyboard_check_pressed(ord('E')); ///button_4
-inventory_key = keyboard_check_pressed(ord('I')); ///button_5
-attack_key = mouse_check_button_pressed(mb_left); ///button_6
-pause_key = keyboard_check_pressed(vk_escape); ///pause
-
+            <string>///Detect what key is pressed
+up = keyboard_check(ord('W'));
+down = keyboard_check(ord('S'));
+left = keyboard_check(ord('A'));
+right = keyboard_check(ord('D'));
+start = keyboard_check_pressed(vk_escape);
+tumble = keyboard_check_pressed(vk_shift);
+attack = mouse_check_button_pressed(mb_left);
 </string>
           </argument>
         </arguments>

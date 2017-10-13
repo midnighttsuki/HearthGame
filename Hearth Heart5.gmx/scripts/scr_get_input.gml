@@ -1,20 +1,55 @@
 ///scr_get_input
-a_key = keyboard_check(ord('A'));
-d_key = keyboard_check(ord('D'));
-w_key = keyboard_check(ord('W'));
-s_key = keyboard_check(ord('S'));
-dash_key = keyboard_check_pressed (vk_lshift);
-attack_key = mouse_check_button_pressed(mb_left)
-
+/*
 // Get the axis
 xaxis = (d_key - a_key);
 yaxis = (s_key - w_key);
-
-// Check for gamepad input
-if (gamepad_is_connected(0)) {
-    gamepad_set_axis_deadzone(0, .35);
-    xaxis = gamepad_axis_value(0, gp_axislh)
-    yaxis = gamepad_axis_value(0, gp_axislv)
-    dash_key = gamepad_button_check_pressed(0, gp_face1);
-    attack_key = gamepad_button_check_pressed(0, gp_face3);
+}*/
+///check_input();
+///checks input for what key
+if(Input.up_key) 
+{
+    ///sets players state to direction then switchs state too player walk
+    obj_player.face = "UP";
+    state_change(scr_move_state);
+}
+if(Input.down_key) 
+{    
+    obj_player.face = "DOWN";
+    state_change(scr_move_state);
+}
+if(Input.left_key)
+{    
+    obj_player.face = "LEFT";
+    state_change(scr_move_state);
+}
+if(Input.right_key)
+{    
+    obj_player.face = "RIGHT";
+    state_change(scr_move_state);
+}
+if(Input.up_key && Input.left_key)
+{   
+    obj_player.face = "UPLEFT";
+    state_change(scr_move_state);
+}
+if(Input.up_key && Input.right_key)
+{    
+    obj_player.face = "UPRIGHT";
+    state_change(scr_move_state);
+}
+if(Input.down_key && Input.left_key)
+{    
+    obj_player.face = "DOWNLEFT";
+    state_change(scr_move_state);
+}
+if(Input.down_key && Input.right_key)
+{    
+    obj_player.face = "DOWNRIGHT";
+    state_change(scr_move_state);
+}
+if(!Input.up_key && !Input.down_key && !Input.left_key && !Input.right_key)
+{
+    ///if no keys are pressed player is set to IDLE
+    obj_player.face = "IDLE";
+    state_change(scr_standing_state);
 }

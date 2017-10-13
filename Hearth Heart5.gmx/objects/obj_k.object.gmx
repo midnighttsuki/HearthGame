@@ -5,45 +5,13 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_speaker</parentName>
+  <parentName>obj_parNPC</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// initialize k
-event_inherited();
-dialog = noone;
-dialog_page = 0;
-xoffset = -32;
-yoffset = -40;
-text[0] = "I hope it doesn't rain...";
-text[1] = "...for your sake!";
-text[2] = "You should wake up soon.";
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-  </events>
-  <PhysicsObject>-1</PhysicsObject>
+  <events/>
+  <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
-  <PhysicsObjectShape>1</PhysicsObjectShape>
-  <PhysicsObjectDensity>0</PhysicsObjectDensity>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
   <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
@@ -51,10 +19,5 @@ text[2] = "You should wake up soon.";
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>12,24</point>
-    <point>24,24</point>
-    <point>24,32</point>
-    <point>12,32</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>
