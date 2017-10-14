@@ -16,8 +16,7 @@ if(!isDashing)
         {
             while(!place_meeting(x + sign(xSpd), y, obj_parWall)&& !place_meeting(x + sign(xSpd), y, obj_parNPC))
             {
-            
-                x += sign(xSpd);
+                    x += sign(xSpd);
             }
         xSpd = 0;
         }

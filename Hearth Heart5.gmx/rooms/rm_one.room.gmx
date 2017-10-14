@@ -57,14 +57,18 @@
     <instance objName="obj_cWall" x="960" y="40" name="inst_0594EA71" locked="0" code="" scaleX="60.15625" scaleY="1.35483872890472" colour="4294967295" rotation="0"/>
     <instance objName="obj_cWall" x="960" y="1080" name="inst_0A282F25" locked="0" code="" scaleX="60.15625" scaleY="1.35483872890472" colour="4294967295" rotation="0"/>
     <instance objName="obj_k" x="1024" y="680" name="inst_BCE910AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_view" x="1016" y="760" name="inst_E398BDCE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_roomWarp" x="1920" y="0" name="inst_AB6E970E" locked="0" code="targetX = 20;&#xA;targetY = &quot;true&quot;;&#xA;targetRoom = rm_two;&#xA;" scaleX="0.75" scaleY="33.75" colour="4294967295" rotation="0"/>
     <instance objName="obj_slime" x="728" y="880" name="inst_A4874F63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_slime" x="688" y="352" name="inst_1BA6FB9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_slime" x="1400" y="624" name="inst_35C7031C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_slime" x="1352" y="904" name="inst_02174FF9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_slime" x="576" y="568" name="inst_5958457B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_slime" x="1560" y="272" name="inst_F29D18C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slime" x="544" y="688" name="inst_A83821A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slime" x="776" y="480" name="inst_75DD631B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slime" x="432" y="408" name="inst_609A5FEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slime" x="256" y="128" name="inst_562AD818" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slime" x="1424" y="152" name="inst_30FF975B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slime" x="1504" y="576" name="inst_E6DC762A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slime" x="1064" y="304" name="inst_4A161CAF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slime" x="1408" y="888" name="inst_3EA894FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slime" x="1768" y="208" name="inst_308D9250" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slime" x="1768" y="888" name="inst_D514C076" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
