@@ -3,9 +3,9 @@
   <spriteName>spr_player_down</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>0</depth>
   <persistent>-1</persistent>
-  <parentName>obj_lifeform_parent</parentName>
+  <parentName>obj_parWall</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,45 +25,51 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Set Fixed Rotation
-event_inherited();
-hp = 12;
-spd = 6;
-hspd = 0;
-vspd = 0;
-xaxis = 0;
-yaxis = 0;
-len = 0;
-dir = 0;
-attacked = false;
-image_speed = 0;
-scr_get_input();
-state = scr_move_state;
-face = DOWN;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Dash state alarm
-state = scr_move_state;
+            <string>///Create Player Stats
+
+///Player Stats
+pHP = 12;
+pMaxHP = pHP;
+pStamina = 10;
+pMaxStamina = pStamina;
+pExpr = 0;
+pMaxExpr = 3;
+pLevel = 1;
+pAttack = 1;
+staminaTimer = 0;
+
+///Player Movement
+pSpd = 6;
+xSpd = 0;
+ySpd = 0;
+dashSpd = 10; ///pSpd * dashSpd
+isDashing = false;
+
+///player sprites
+playerSprite[0] = spr_player_up;
+playerSprite[1] = spr_player_down;
+playerSprite[2] = spr_player_left;
+playerSprite[3] = spr_player_right;
+playerSprite[4] = spr_player_up_left;
+playerSprite[5] = spr_player_up_right;
+playerSprite[6] = spr_player_down_left;
+playerSprite[7] = spr_player_down_right;
+playerSprite[8] = spr_player_shadow;
+playerSprite[9] = spr_player_attack_down;
+playerSprite[10] = spr_player_attack_right;
+playerSprite[11] = spr_player_attack_left;
+playerSprite[12] = spr_player_attack_up;
+
+///Player Direction
+pDirection = 0;
+
+///amimation
+attacking = false;
+anime = .5;
+pState = "DOWN";
+
+///Intialize State Machine
+state_initialize();
 </string>
           </argument>
         </arguments>
@@ -86,20 +92,15 @@ state = scr_move_state;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Player Movement
-depth = -y;
-script_execute(state)
-
-// Check for player death
-if (obj_player_stats.hp &lt;= 0) {
-    instance_destroy();
-}
+            <string>///Start State Machine
+state_process(st_player_standing);
+scr_player_stats();
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_health">
+    <event eventtype="4" ename="obj_roomWarp">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -116,153 +117,32 @@ if (obj_player_stats.hp &lt;= 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// collect health
-with (other) {
-    instance_destroy();
+            <string>if(other.targetY == "true"){
+    other.targetY = obj_player.y;
+}
+if(other.targetX == "true"){
+    other.targetX = obj_player.x;
 }
 
-// level up code
-with (obj_player_stats) {
-    hp = min(hp + 5, maxhp);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_expr">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// collect expr
-with (other) {
-    instance_destroy();
-}
-
-// level up code
-with (obj_player_stats) {
-    expr += 1;
-    if (expr &gt;= maxexpr) {
-        level += 1;
-        expr = expr-maxexpr;
-        maxexpr *= 2;
-        hp += 2;
-        maxhp += 2;
-        stamina += 2;
-        maxstamina += 2;
-        attack += 1;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="7">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Change back to move state
-if (state == scr_attack_state) {
-    state = scr_move_state;
-    attacked = false;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///set fixed rotation
-phy_fixed_rotation = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw Shadow
-draw_sprite(spr_player_shadow, image_index, x, y);
-draw_self();
+x = other.targetX;
+y = other.targetY;
+room_goto(other.targetRoom);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
   </events>
-  <PhysicsObject>-1</PhysicsObject>
+  <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
-  <PhysicsObjectShape>1</PhysicsObjectShape>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>5</PhysicsObjectLinearDamping>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
   <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>8,24</point>
-    <point>24,24</point>
-    <point>24,40</point>
-    <point>8,40</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>

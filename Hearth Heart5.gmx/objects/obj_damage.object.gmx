@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_damage</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -59,7 +59,7 @@ instance_destroy();
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_speaker">
+    <event eventtype="4" ename="obj_parEnemy">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -76,21 +76,8 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Activate the dialog
-with (other){
-    if (!instance_exists(dialog)) {
-        dialog = instance_create(x+xoffset, y+yoffset, obj_dialog);
-        dialog.text = text;
-    } else {
-        dialog.text_page++;
-        dialog.text_count = 0;
-        if (dialog.text_page &gt; array_length_1d(dialog.text)-1) {
-            with (dialog) {
-                instance_destroy();
-            }
-        }
-    }
-}
+            <string>/// Destroy the damage object
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -114,53 +101,30 @@ with (other){
           <argument>
             <kind>1</kind>
             <string>/// Damage the player
-if (other.id != creator) {
-    obj_player_stats.hp -= damage;
-    if (instance_exists(creator)) {
-        var dir = point_direction(creator.x, creator.y, other.x, other.y);
-    } else {
-        var dir = point_direction(x, y, other.x, other.y);
-    }
-    var xforce = lengthdir_x(knockback, dir);
-    var yforce = lengthdir_y(knockback, dir);
-    with (other) {
-        physics_apply_impulse(x, y, xforce, yforce);
-    }
+obj_player.pHP -= damage;
+if (instance_exists(creator)) {
+    var dir = point_direction(creator.x, creator.y, other.x, other.y);
+} else {
+    var dir = point_direction(x, y, other.x, other.y);
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_lifeform_parent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Damage all lifeforms
-if (other.id != creator) {
-    other.hp -= damage;
-     if (instance_exists(creator)) {
-        var dir = point_direction(creator.x, creator.y, other.x, other.y);
-    } else {
-        var dir = point_direction(x, y, other.x, other.y);
+var xforce = lengthdir_x(knockback, dir);
+var yforce = lengthdir_y(knockback, dir);
+with (other) {
+    if(y &lt;= other.y)
+    {
+        y += -yforce;
     }
-    var xforce = lengthdir_x(knockback, dir);
-    var yforce = lengthdir_y(knockback, dir);
-    with (other) {
-        physics_apply_impulse(x, y, xforce, yforce);
+    else if( y &gt; other.y)
+    {
+        y += yforce;
+    }
+    if(x &lt;= other.x)
+    {
+        x += -xforce;
+    }
+    else if( x &gt; other.x)
+    {
+        y += yforce;
     }
 }
 </string>
@@ -169,8 +133,8 @@ if (other.id != creator) {
       </action>
     </event>
   </events>
-  <PhysicsObject>-1</PhysicsObject>
-  <PhysicsObjectSensor>-1</PhysicsObjectSensor>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
@@ -180,8 +144,5 @@ if (other.id != creator) {
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>12,12</point>
-    <point>12,12</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>

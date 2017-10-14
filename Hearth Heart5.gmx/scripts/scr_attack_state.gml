@@ -1,5 +1,5 @@
 ///scr_attack_state
-image_speed = .5;
+image_speed = anime;
 switch (sprite_index) {
     case spr_player_down:
         sprite_index = spr_player_attack_down;
