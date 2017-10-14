@@ -69,6 +69,16 @@
       <script>scripts\state_process.gml</script>
       <script>scripts\state_switch.gml</script>
     </scripts>
+    <scripts name="Enemies">
+      <scripts name="Enemies States">
+        <script>scripts\st_enemy_standing.gml</script>
+        <script>scripts\st_enemy_chase.gml</script>
+        <script>scripts\st_enemy_move.gml</script>
+        <script>scripts\st_enemy_wait.gml</script>
+      </scripts>
+      <script>scripts\scr_find_player.gml</script>
+      <script>scripts\scr_enemy_next_state.gml</script>
+    </scripts>
     <scripts name="Player">
       <scripts name="Player States">
         <script>scripts\st_player_standing.gml</script>
@@ -96,10 +106,12 @@
         <object>objects\obj_parWall</object>
         <object>objects\obj_parNPC</object>
         <object>objects\obj_parDepth</object>
+        <object>objects\obj_parEnemy</object>
       </objects>
     </objects>
     <objects name="Masks">
       <object>objects\obj_roomWarp</object>
+      <object>objects\obj_damage</object>
       <objects name="Collision Walls">
         <object>objects\obj_cWall</object>
         <object>objects\obj_cDiagnoal_tl</object>
@@ -110,6 +122,9 @@
     </objects>
     <objects name="NPC">
       <object>objects\obj_k</object>
+    </objects>
+    <objects name="Enemies">
+      <object>objects\obj_slime</object>
     </objects>
   </objects>
   <rooms name="rooms">
