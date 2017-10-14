@@ -3,28 +3,32 @@ scr_find_player();
 var xDirection = "";
 var yDirection = "";
 var currentDirection = xDirection + yDirection;
-if(eTargetX > x)
+///X direction
+if(eTargetX == x && eTargetX -1 == x && eTargetX + 1 == x){
+    xDirection = "";
+}
+else if(eTargetX > x && eTargetX -1 != x)
 {
-    xDirection = "RIGHT"   
+    xDirection = "RIGHT";
 }
-else if(eTargetX < x)
+else if(eTargetX < x && eTargetX + 1 != x)
 {
-    xDirection = "LEFT"
+    xDirection = "LEFT";
 }
-else if(eTargetX == x){
-    xDirection = ""
+///Y direction
+if(eTargetY == y && eTargetY -1 == y && eTargetY + 1 == y){
+    yDirection = ""
 }
-if(eTargetY > y)
+else if(eTargetY > y && eTargetY - 1 != y)
 {
     yDirection = "DOWN"   
 }
-else if(eTargetY < y)
+else if(eTargetY < y && eTargetY + 1 != y)
 {
     yDirection = "UP"
 }
-else if(eTargetY == y){
-    xDirection = ""
-}
+
+///Sets current direction to yDirectin + xDirection
 currentDirection = yDirection + xDirection;
 switch(currentDirection){
     case "UP":{
@@ -76,8 +80,8 @@ switch(currentDirection){
         }
     case "RIGHT":{
         image_xscale = 1;
-        ySpd = -eSpd;
-        xSpd = -eSpd;
+        ySpd = 0;
+        xSpd = eSpd;
         eDirection = 0;
         break;
     }
