@@ -51,6 +51,5 @@ if(Input.down && Input.right)
 if(!Input.up && !Input.down && !Input.left && !Input.right && !Input.tumble)
 {
     ///if no keys are pressed player is set to IDLE
-    pState = "IDLE";
     state_switch(st_player_standing);
 }
